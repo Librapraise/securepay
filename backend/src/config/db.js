@@ -1,13 +1,16 @@
-const mongoose = require('mongoose');
+const { PrismaClient } = require('@prisma/client');
 
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/securepay');
-    console.log(`[MongoDB] Connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.error(`[MongoDB Error] ${error.message}`);
-    process.exit(1);
+let prisma;
+
+if (process.env.NODE_ENV === 'production') {
+  prisma = new PrismaClient();
+} else {
+  if (!global.prisma) {
+    global.prisma = new PrismaClient({
+      log: ['query', 'info', 'warn', 'error'],
+    });
   }
-};
+  prisma = global.prisma;
+}
 
-module.exports = connectDB;
+module.exports = prisma;
