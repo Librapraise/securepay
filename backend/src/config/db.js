@@ -1,13 +1,23 @@
+﻿require('dotenv').config();
 const { PrismaClient } = require('@prisma/client');
 
 let prisma;
 
+const prismaOptions = {
+  datasources: {
+    db: {
+      url: process.env.DATABASE_URL,
+    },
+  },
+};
+
 if (process.env.NODE_ENV === 'production') {
-  prisma = new PrismaClient();
+  prisma = new PrismaClient(prismaOptions);
 } else {
   if (!global.prisma) {
     global.prisma = new PrismaClient({
-      log: ['query', 'info', 'warn', 'error'],
+      ...prismaOptions,
+      log: ['info', 'warn', 'error'],
     });
   }
   prisma = global.prisma;
