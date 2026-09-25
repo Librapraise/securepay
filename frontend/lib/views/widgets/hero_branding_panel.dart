@@ -26,19 +26,20 @@ class HeroBrandingPanel extends StatelessWidget {
           ),
           if (subtitle.isNotEmpty)
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 48.0, vertical: 64.0),
+              padding: const EdgeInsets.symmetric(horizontal: 48.0, vertical: 48.0),
               child: Align(
                 alignment: Alignment.bottomLeft,
                 child: Container(
+                  constraints: const BoxConstraints(maxWidth: 420),
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
                   decoration: BoxDecoration(
-                    color: Colors.black.withValues(alpha: 0.18),
+                    color: Colors.black.withValues(alpha: 0.25),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
                     subtitle,
                     style: TextStyle(
-                      fontSize: 14.5,
+                      fontSize: 14,
                       color: Colors.white.withValues(alpha: 0.95),
                       height: 1.45,
                       fontFamily: 'DM Sans',
