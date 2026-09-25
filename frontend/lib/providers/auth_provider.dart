@@ -70,7 +70,11 @@ class AuthProvider extends ChangeNotifier {
       return true;
     } catch (e) {
       _status = AuthStatus.error;
-      _errorMessage = e.toString().replaceFirst('Exception: ', '');
+      if (e is DioException) {
+        _errorMessage = e.error?.toString() ?? e.response?.data?['message'] ?? e.message ?? 'Sign up failed. Please try again.';
+      } else {
+        _errorMessage = e.toString().replaceFirst('Exception: ', '');
+      }
       notifyListeners();
       return false;
     }
@@ -102,7 +106,11 @@ class AuthProvider extends ChangeNotifier {
       return true;
     } catch (e) {
       _status = AuthStatus.error;
-      _errorMessage = e.toString().replaceFirst('Exception: ', '');
+      if (e is DioException) {
+        _errorMessage = e.error?.toString() ?? e.response?.data?['message'] ?? e.message ?? 'Login failed. Please check your credentials or network.';
+      } else {
+        _errorMessage = e.toString().replaceFirst('Exception: ', '');
+      }
       notifyListeners();
       return false;
     }
