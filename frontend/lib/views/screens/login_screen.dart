@@ -293,6 +293,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: HeroBrandingPanel(
                     title: 'Effortlessly Track Your Shipments from Nigeria!',
                     subtitle: '',
+                    imagePath: 'assets/images/login_branding.png',
                   ),
                 ),
               ],

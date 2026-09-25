@@ -4,11 +4,13 @@ import '../../core/constants/app_colors.dart';
 class HeroBrandingPanel extends StatelessWidget {
   final String title;
   final String subtitle;
+  final String imagePath;
 
   const HeroBrandingPanel({
     super.key,
     required this.title,
     required this.subtitle,
+    this.imagePath = 'assets/images/hero_branding.png',
   });
 
   @override
@@ -20,7 +22,7 @@ class HeroBrandingPanel extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/images/hero_branding.png',
+              imagePath,
               fit: BoxFit.cover,
             ),
           ),
