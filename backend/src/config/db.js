@@ -1,4 +1,4 @@
-﻿require('dotenv').config();
+require('dotenv').config();
 const { PrismaClient } = require('@prisma/client');
 
 let prisma;
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
   if (!global.prisma) {
     global.prisma = new PrismaClient({
       ...prismaOptions,
-      log: ['info', 'warn', 'error'],
+      log: ['warn', 'error'],
     });
   }
   prisma = global.prisma;

@@ -29,25 +29,32 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Colors.white,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: const BorderSide(color: AppColors.borderLight, width: 1.0),
+          borderSide: const BorderSide(color: Color(0xFFD1D5DB), width: 1.0),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: const BorderSide(color: AppColors.borderLight, width: 1.0),
+          borderSide: const BorderSide(color: Color(0xFFD1D5DB), width: 1.0),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: const BorderSide(color: AppColors.borderFocus, width: 1.8),
+          borderSide: const BorderSide(color: AppColors.borderFocus, width: 1.6),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
           borderSide: const BorderSide(color: AppColors.error, width: 1.0),
         ),
-        labelStyle: const TextStyle(color: AppColors.textHeading, fontSize: 14, fontWeight: FontWeight.w500),
-        hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 14),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.0),
+          borderSide: const BorderSide(color: AppColors.error, width: 1.5),
+        ),
+        hintStyle: const TextStyle(
+          color: Color(0xFF9CA3AF),
+          fontSize: 14.5,
+          fontWeight: FontWeight.w400,
+        ),
       ),
     );
   }
