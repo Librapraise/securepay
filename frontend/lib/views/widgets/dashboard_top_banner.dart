@@ -6,11 +6,15 @@ class DashboardTopBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isMobile = screenWidth < 600;
+    final isTablet = screenWidth >= 600 && screenWidth < 960;
+
     return Column(
       children: [
         Container(
           width: double.infinity,
-          height: 190,
+          height: isMobile ? 150 : (isTablet ? 170 : 190),
           decoration: BoxDecoration(
             color: AppColors.bannerBgDark,
             borderRadius: BorderRadius.circular(16),
@@ -39,9 +43,12 @@ class DashboardTopBanner extends StatelessWidget {
                   children: [
                     // Text Column
                     Expanded(
-                      flex: 6,
+                      flex: isMobile ? 7 : 6,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 32.0),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: isMobile ? 20.0 : 40.0,
+                          vertical: isMobile ? 18.0 : 32.0,
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +56,7 @@ class DashboardTopBanner extends StatelessWidget {
                             Text(
                               'KEEP UP WITH YOUR\nBUSINESS NEEDS',
                               style: TextStyle(
-                                fontSize: 28,
+                                fontSize: isMobile ? 18 : (isTablet ? 22 : 28),
                                 height: 1.25,
                                 fontWeight: FontWeight.w900,
                                 letterSpacing: 0.5,
@@ -69,9 +76,13 @@ class DashboardTopBanner extends StatelessWidget {
                     ),
                     // Illustration on right
                     Expanded(
-                      flex: 5,
+                      flex: isMobile ? 4 : 5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 32.0, top: 12.0, bottom: 8.0),
+                        padding: EdgeInsets.only(
+                          right: isMobile ? 12.0 : 32.0,
+                          top: 8.0,
+                          bottom: 8.0,
+                        ),
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: Image.asset(
@@ -79,8 +90,12 @@ class DashboardTopBanner extends StatelessWidget {
                             fit: BoxFit.contain,
                             height: double.infinity,
                             errorBuilder: (context, error, stackTrace) {
-                              return const Center(
-                                child: Icon(Icons.public, size: 100, color: Colors.white24),
+                              return Center(
+                                child: Icon(
+                                  Icons.public,
+                                  size: isMobile ? 64 : 100,
+                                  color: Colors.white24,
+                                ),
                               );
                             },
                           ),
